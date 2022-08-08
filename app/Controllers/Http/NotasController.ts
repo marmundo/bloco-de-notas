@@ -1,16 +1,17 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Notas from 'App/Models/Nota'
+import Nota from 'App/Models/Nota'
 export default class NotasController {
   public async index() {
-    return Notas.all()
+    return Nota.all()
   }
 
   /**
    *    */
   public async store({ request, response }) {
     let body = request.body()
+    let nota = await Nota.create(body)
     response.status(201)
-    return { msg: 'Nota criada', body }
+    return nota
   }
 
   /**
@@ -18,17 +19,25 @@ export default class NotasController {
    */
   public async show({ params }: HttpContextContract) {
     let id = params.id
-    return 'Nota de id ' + id
+    let nota = Nota.findOrFail(id)
+    return nota
   }
 
-  public async destroy({ params }: HttpContextContract) {
+  public async destroy({ params, response }: HttpContextContract) {
     let id = params.id
-    return `Nota ${id} deletada`
+    let nota = await Nota.findOrFail(id)
+    response.status(204)
+    return nota
   }
 
-  public async update({ params, request }: HttpContextContract) {
+  public async update({ params, request, response }: HttpContextContract) {
     let body = request.body()
     let id = params.id
-    return { mag: 'Nota editada', body }
+    let nota = await Nota.findOrFail(id)
+    nota.titulo = body.titulo
+    nota.corpo = body.corpo
+
+    response.status(202)
+    return nota.save()
   }
 }
