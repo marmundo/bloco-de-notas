@@ -23,3 +23,7 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+
+Route.get('/nome',async () => {
+  return "Eu sou o bloco de notas"
+})
