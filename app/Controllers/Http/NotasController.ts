@@ -1,8 +1,8 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-
+import Notas from 'App/Models/Nota'
 export default class NotasController {
   public async index() {
-    return 'Notas'
+    return Notas.all()
   }
 
   /**

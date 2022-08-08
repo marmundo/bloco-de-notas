@@ -37,3 +37,17 @@ Adonis JS GOTO Controller (https://marketplace.visualstudio.com/items?itemName=s
 ## Atalho para crição de métodos http
 
 ```Route.resource('notas','NotasController').apiOnly()```
+
+# Persistencia
+
+## Comando para instalação do ORM Lucid
+
+``` 
+npm install @adonisjs/lucid
+node ace configure @adonisjs/lucid
+```
+## Comando para criar modelo e migration
+```node ace make:model <nome> -m```
+
+## Comando para executar a migration
+```node ace migration:run```
