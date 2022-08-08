@@ -25,5 +25,10 @@ Route.get('/', async () => {
 })
 
 Route.get('/nome',async () => {
-  return "Eu sou o bloco de notas"
+  return 'Eu sou o bloco de notas'
+})
+
+Route.post('/nome', async ({ request }) => {
+  let body=request.body()
+  return `Olá ${body.nome}. Seja bem vindo ao bloco de notas`
 })
