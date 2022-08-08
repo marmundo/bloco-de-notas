@@ -6,7 +6,7 @@ Adonis JS
 
 # Executar projeto
 
-nem run dev
+npm run dev
 
 # Para fazer consulta a ati usar o Thunder client (extensão VS Code)
 
@@ -16,6 +16,8 @@ https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client
 
 ## Definindo a primeira rota
 
+```
 Route.get(‘/‘, async()=> {
 	return {hello: ‘world’}
 })
+```
