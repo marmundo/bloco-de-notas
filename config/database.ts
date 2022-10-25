@@ -43,11 +43,11 @@ const databaseConfig: DatabaseConfig = {
         database: Env.get('PG_DB_NAME'),
         ssl: { rejectUnauthorized: false },
       },
-      pool: {
-        afterCreate: (conn, cb) => {
-          conn.run('PRAGMA foreign_keys=true', cb)
-        },
-      },
+      // pool: {
+      //   afterCreate: (conn, cb) => {
+      //     conn.run('PRAGMA foreign_keys=true', cb)
+      //   },
+      // },
       migrations: {
         naturalSort: true,
       },
