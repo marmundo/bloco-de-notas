@@ -20,4 +20,12 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.resource('notas', 'NotasController').apiOnly()
+// Route.resource('notas', 'NotasController').apiOnly()
+
+Route.group(() => {
+  Route.post('register', 'AuthController.register')
+  Route.post('login', 'AuthController.login')
+  Route.group(() => {
+    Route.resource('notas', 'NotasController').apiOnly()
+  }).middleware('auth:api')
+}).prefix('api')
