@@ -4,9 +4,6 @@ import { DateTime } from 'luxon'
 import Nota from './Nota'
 
 export default class User extends BaseModel {
-  @hasMany(() => Nota)
-  public notas: HasMany<typeof Nota>
-
   @column({ isPrimary: true })
   public id: number
 
@@ -34,4 +31,6 @@ export default class User extends BaseModel {
       user.password = await Hash.make(user.password)
     }
   }
+  @hasMany(() => Nota)
+  public notas: HasMany<typeof Nota>
 }
