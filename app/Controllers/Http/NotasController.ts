@@ -20,11 +20,14 @@ export default class NotasController {
   /**
    * show
    */
-  public async show({ auth, params }: HttpContextContract) {
+  public async show({ auth, params, response }: HttpContextContract) {
     let id = params.id
     const user = await auth.authenticate()
     let nota = await user.related('notas').query().where('id', '=', id)
-    return nota
+    if (nota.length === 0) {
+      response.status(404)
+    }
+    return nota[0]
   }
 
   public async destroy({ auth, params, response }: HttpContextContract) {
