@@ -1,8 +1,9 @@
 import { test } from '@japa/runner'
+import User from 'App/Models/User'
 
-test('display welcome page', async ({ client }) => {
-  const response = await client.get('/')
+test('sitema está online', async ({ client }) => {
+  const user = await User.find(1)
+  const response = await client.get('/api/notas').guard('api').loginAs(user)
 
   response.assertStatus(200)
-  response.assertBodyContains({ hello: 'world' })
 })
