@@ -1,4 +1,4 @@
-name: ProjectName CI Tests
+name: Bloco de Notas CI Tests
 on: push
 
 jobs:
