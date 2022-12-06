@@ -1,6 +1,6 @@
 name: Bloco de Notas CI Tests
 on: push
-
+ branches: [ "deploy" ]
 jobs:
   japa-tests:
     runs-on: ubuntu-latest
