@@ -11,7 +11,7 @@ jobs:
     container:
       image: node:${{ matrix.node-version }}
 
-#     services:
+    services:
 #       redis:
 #         image: redis
 #         # Set health checks to wait until redis has started
