@@ -1,6 +1,7 @@
 name: Bloco de Notas CI Tests
-on: push
-  branches: [ "master" , "deploy" ]
+on:
+  push:
+    branches: ['master', 'deploy']
 jobs:
   japa-tests:
     runs-on: ubuntu-latest
@@ -12,14 +13,14 @@ jobs:
       image: node:${{ matrix.node-version }}
 
     services:
-#       redis:
-#         image: redis
-#         # Set health checks to wait until redis has started
-#         options: >-
-#           --health-cmd "redis-cli ping"
-#           --health-interval 10s
-#           --health-timeout 5s
-#           --health-retries 5
+      #       redis:
+      #         image: redis
+      #         # Set health checks to wait until redis has started
+      #         options: >-
+      #           --health-cmd "redis-cli ping"
+      #           --health-interval 10s
+      #           --health-timeout 5s
+      #           --health-retries 5
 
       postgres:
         image: postgres
@@ -50,10 +51,10 @@ jobs:
           PG_USER: ProjectName
           PG_PASSWORD: password
           PG_DB_NAME: ProjectName-test
-#           REDIS_CONNECTION: local
-#           REDIS_HOST: redis
-#           REDIS_PORT: 6379
-#           REDIS_PASSWORD:
+          #           REDIS_CONNECTION: local
+          #           REDIS_HOST: redis
+          #           REDIS_PORT: 6379
+          #           REDIS_PASSWORD:
           APP_KEY: somefakekeythatis>16characters
           NODE_ENV: test
           ASSETS_DRIVER: fake
